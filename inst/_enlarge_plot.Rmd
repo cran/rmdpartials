@@ -1,0 +1,36 @@
+```{r rmdpartialsetup,eval=TRUE,echo=FALSE}
+if (exists("testing")) {
+	plot <- plot(1:100)
+	large_plot <- plot(1:100)
+	name <- "test_plot"
+}
+```
+
+
+<!-- Button trigger modal -->
+<a href="#`r plot_name`" data-toggle="modal" data-target="#`r plot_name`">
+```{r fig.width=2,fig.height=2}
+plot
+```
+</a>
+
+<!-- Modal -->
+<div class="modal fade" id="`r plot_name`" tabindex="-1" role="dialog" aria-labelledby="`r plot_name`Label" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+
+```{r fig.width=7,fig.height=7}
+large_plot
+```
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+
+

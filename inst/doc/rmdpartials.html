@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Ruben Arslan" />
+
+<meta name="date" content="2019-07-12" />
+
+<title>Rmarkdown partial example</title>
+
+<script src="rmdpartials_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="rmdpartials_files/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="rmdpartials_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="rmdpartials_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="rmdpartials_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="rmdpartials_files/navigation-1.1/tabsets.js"></script>
+<link href="rmdpartials_files/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="rmdpartials_files/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Rmarkdown partial example</h1>
+<h4 class="author">Ruben Arslan</h4>
+<h4 class="date">2019-07-12</h4>
+
+</div>
+
+
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>For example, you can make enlarge-able plots:</p>
+<div id="graphical-relationship" class="section level2">
+<h2>Graphical relationship</h2>
+<pre class="r"><code>library(rmdpartials)
+library(ggplot2)
+x &lt;- rnorm(100)
+y &lt;- x + rnorm(100) + 0.5 * x^2
+curve &lt;- qplot(x, y)
+enlarge_plot(curve, large_plot = curve + theme_classic(base_size = 20), plot_name = &quot;myplot&quot;)</code></pre>
+<!-- Button trigger modal -->
+<p><a href="#myplot" data-toggle="modal" data-target="#myplot"> <img src="rmdpartials_files/figure-html/myplot_rmdpartial-6-1.png" width="192" /> </a></p>
+<!-- Modal -->
+<div id="myplot" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myplotLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-body">
+<p><img src="rmdpartials_files/figure-html/myplot_rmdpartial-7-1.png" width="672" /></p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">
+Close
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="regression" class="section level2">
+<h2>Regression</h2>
+<pre class="r"><code>reg &lt;- lm(y ~ x)
+regression_diagnostics(reg)</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td align="right">0.3592409</td>
+</tr>
+<tr class="even">
+<td>x</td>
+<td align="right">1.0755503</td>
+</tr>
+</tbody>
+</table>
+<p>Values vs. fitted values.</p>
+<p><img src="rmdpartials_files/figure-html/9467636bbb_rmdpartial-10-1.png" width="672" /></p>
+<details>
+<p><summary>Diagnostics (click to show)</summary></p>
+<p><img src="rmdpartials_files/figure-html/9467636bbb_rmdpartial-11-1.png" width="672" /><img src="rmdpartials_files/figure-html/9467636bbb_rmdpartial-11-2.png" width="672" /><img src="rmdpartials_files/figure-html/9467636bbb_rmdpartial-11-3.png" width="672" /><img src="rmdpartials_files/figure-html/9467636bbb_rmdpartial-11-4.png" width="672" /></p>
+</details>
+</div>
+<div id="write-a-partial-on-the-fly" class="section level2">
+<h2>Write a partial on the fly</h2>
+<pre class="r"><code>x &lt;- 5
+y &lt;- 9
+partial(text = &quot;`r x` `r y`&quot;)</code></pre>
+<p>5 9</p>
+</div>
+<div id="debug" class="section level2">
+<h2>Debug</h2>
+<p>Learn about environments in partials.</p>
+<pre class="r"><code>knit_child_debug()</code></pre>
+<details>
+<p><summary>Debug</summary></p>
+<p>Working directory</p>
+<pre><code>## [1] &quot;/private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpAipB0j/Rbuild15a497ffe8c/rmdpartials/vignettes&quot;</code></pre>
+<p>needs_preview()</p>
+<pre><code>## [1] FALSE</code></pre>
+<p>is_interactive()</p>
+<pre><code>## [1] FALSE</code></pre>
+<p>Knitr Output.dir</p>
+<pre><code>## [1] &quot;/private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpAipB0j/Rbuild15a497ffe8c/rmdpartials/vignettes&quot;</code></pre>
+<p>Child mode</p>
+<pre><code>## [1] TRUE</code></pre>
+<p>Viewer null</p>
+<pre><code>## [1] TRUE</code></pre>
+<p>In tmp dir</p>
+<pre><code>## [1] FALSE</code></pre>
+<p>knitr.in.progress</p>
+<pre><code>## [1] TRUE</code></pre>
+<p>rstudio.notebook.executing</p>
+<pre><code>## NULL</code></pre>
+<p>TESTTHAT_interactive</p>
+<pre><code>## [1] &quot;&quot;</code></pre>
+<p>TESTTHAT</p>
+<pre><code>## [1] &quot;&quot;</code></pre>
+<p>interactive</p>
+<pre><code>## [1] FALSE</code></pre>
+<p>objects in this environment</p>
+<pre><code>## [1] &quot;is_interactive&quot; &quot;needs_preview&quot;</code></pre>
+<details>
+<p><summary>knitr::opts_knit</summary></p>
+<pre><code>## $progress
+## [1] FALSE
+## 
+## $verbose
+## [1] FALSE
+## 
+## $eval.after
+## [1] &quot;fig.cap&quot;
+## 
+## $base.dir
+## NULL
+## 
+## $base.url
+## NULL
+## 
+## $root.dir
+## NULL
+## 
+## $child.path
+## [1] &quot;&quot;
+## 
+## $upload.fun
+## function (x) 
+## x
+## &lt;bytecode: 0x7fd5d9b48278&gt;
+## &lt;environment: namespace:base&gt;
+## 
+## $global.device
+## [1] FALSE
+## 
+## $global.par
+## [1] FALSE
+## 
+## $concordance
+## [1] FALSE
+## 
+## $documentation
+## [1] 1
+## 
+## $self.contained
+## [1] TRUE
+## 
+## $unnamed.chunk.label
+## [1] &quot;rmdpartial&quot;
+## 
+## $highr.opts
+## NULL
+## 
+## $out.format
+## [1] &quot;markdown&quot;
+## 
+## $child
+## [1] TRUE
+## 
+## $parent
+## [1] FALSE
+## 
+## $tangle
+## [1] FALSE
+## 
+## $aliases
+## NULL
+## 
+## $header
+## highlight      tikz    framed 
+##        &quot;&quot;        &quot;&quot;        &quot;&quot; 
+## 
+## $global.pars
+## NULL
+## 
+## $rmarkdown.pandoc.from
+## [1] &quot;markdown+autolink_bare_uris+tex_math_single_backslash+smart&quot;
+## 
+## $rmarkdown.pandoc.to
+## [1] &quot;html&quot;
+## 
+## $rmarkdown.pandoc.args
+## [1] &quot;--email-obfuscation&quot;                                                                        
+## [2] &quot;none&quot;                                                                                       
+## [3] &quot;--standalone&quot;                                                                               
+## [4] &quot;--section-divs&quot;                                                                             
+## [5] &quot;--template&quot;                                                                                 
+## [6] &quot;/Library/Frameworks/R.framework/Versions/3.5/Resources/library/rmarkdown/rmd/h/default.html&quot;
+## [7] &quot;--no-highlight&quot;                                                                             
+## [8] &quot;--variable&quot;                                                                                 
+## [9] &quot;highlightjs=1&quot;                                                                              
+## 
+## $rmarkdown.pandoc.id_prefix
+## [1] &quot;&quot;
+## 
+## $rmarkdown.keep_md
+## [1] FALSE
+## 
+## $rmarkdown.df_print
+## [1] &quot;default&quot;
+## 
+## $rmarkdown.version
+## [1] 2
+## 
+## $rmarkdown.runtime
+## [1] &quot;static&quot;
+## 
+## $output.dir
+## [1] &quot;/private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpAipB0j/Rbuild15a497ffe8c/rmdpartials/vignettes&quot;</code></pre>
+</details>
+<details>
+<p><summary>knitr::opts_chunk</summary></p>
+<pre><code>## $eval
+## [1] TRUE
+## 
+## $echo
+## [1] FALSE
+## 
+## $results
+## [1] &quot;markup&quot;
+## 
+## $tidy
+## [1] FALSE
+## 
+## $tidy.opts
+## NULL
+## 
+## $collapse
+## [1] FALSE
+## 
+## $prompt
+## [1] FALSE
+## 
+## $comment
+## [1] &quot;##&quot;
+## 
+## $highlight
+## [1] TRUE
+## 
+## $strip.white
+## [1] TRUE
+## 
+## $size
+## [1] &quot;normalsize&quot;
+## 
+## $background
+## [1] &quot;#F7F7F7&quot;
+## 
+## $cache
+## [1] FALSE
+## 
+## $cache.path
+## [1] &quot;rmdpartials_cache/html/f080a7cff6_&quot;
+## 
+## $cache.vars
+## NULL
+## 
+## $cache.lazy
+## [1] TRUE
+## 
+## $dependson
+## NULL
+## 
+## $autodep
+## [1] FALSE
+## 
+## $cache.rebuild
+## [1] FALSE
+## 
+## $fig.keep
+## [1] &quot;high&quot;
+## 
+## $fig.show
+## [1] &quot;asis&quot;
+## 
+## $fig.align
+## [1] &quot;default&quot;
+## 
+## $fig.path
+## [1] &quot;/private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpAipB0j/Rbuild15a497ffe8c/rmdpartials/vignettes/rmdpartials_files/figure-html/f080a7cff6_&quot;
+## 
+## $dev
+## [1] &quot;png&quot;
+## 
+## $dev.args
+## NULL
+## 
+## $dpi
+## [1] 96
+## 
+## $fig.ext
+## NULL
+## 
+## $fig.width
+## [1] 7
+## 
+## $fig.height
+## [1] 5
+## 
+## $fig.env
+## [1] &quot;figure&quot;
+## 
+## $fig.cap
+## NULL
+## 
+## $fig.scap
+## NULL
+## 
+## $fig.lp
+## [1] &quot;fig:&quot;
+## 
+## $fig.subcap
+## NULL
+## 
+## $fig.pos
+## [1] &quot;&quot;
+## 
+## $out.width
+## NULL
+## 
+## $out.height
+## NULL
+## 
+## $out.extra
+## NULL
+## 
+## $fig.retina
+## [1] 2
+## 
+## $external
+## [1] TRUE
+## 
+## $sanitize
+## [1] FALSE
+## 
+## $interval
+## [1] 1
+## 
+## $aniopts
+## [1] &quot;controls,loop&quot;
+## 
+## $warning
+## [1] TRUE
+## 
+## $error
+## [1] FALSE
+## 
+## $message
+## [1] TRUE
+## 
+## $render
+## NULL
+## 
+## $ref.label
+## NULL
+## 
+## $child
+## NULL
+## 
+## $engine
+## [1] &quot;R&quot;
+## 
+## $split
+## [1] FALSE
+## 
+## $include
+## [1] TRUE
+## 
+## $purl
+## [1] TRUE</code></pre>
+</details>
+<details>
+<p><summary>Sys.getenv()</summary></p>
+<pre><code>## Apple_PubSub_Socket_Render
+##                         /private/tmp/com.apple.launchd.7LbHLOUe9h/Render
+## BIBINPUTS               .:/Library/Frameworks/R.framework/Resources/share/texmf/bibtex/bib:
+## BSTINPUTS               .:/Library/Frameworks/R.framework/Resources/share/texmf/bibtex/bst:
+## CALLR_CHILD_R_LIBS      /private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpMoDYA7/temp_libpath156c2228f4b94:/Library/Frameworks/R.framework/Versions/3.5/Resources/library
+## CALLR_CHILD_R_LIBS_SITE
+##                         
+## CALLR_CHILD_R_LIBS_USER
+##                         /private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpMoDYA7/temp_libpath156c2228f4b94:/Library/Frameworks/R.framework/Versions/3.5/Resources/library
+## CALLR_R_LIBS_SITE_BAK   
+## CALLR_R_LIBS_USER_BAK   ~/Library/R/3.5/library
+## CLICOLOR_FORCE          1
+## CYGWIN                  nodosfilewarning
+## DISPLAY                 /private/tmp/com.apple.launchd.0IUzPaJFtq/org.macosforge.xquartz:0
+## DYLD_FALLBACK_LIBRARY_PATH
+##                         /Library/Frameworks/R.framework/Resources/lib:/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home/lib/server
+## EDITOR                  vi
+## GIT_ASKPASS             rpostback-askpass
+## HOME                    /Users/rubenarslan
+## KMP_DUPLICATE_LIB_OK    1
+## LANG                    en_US.UTF-8
+## LC_COLLATE              C
+## LC_CTYPE                en_US.UTF-8
+## LN_S                    ln -s
+## LOGNAME                 rubenarslan
+## MAGICK_TMPDIR           /var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T//RtmpMoDYA7
+## MAKE                    make
+## MPLENGINE               tkAgg
+## PAGER                   /usr/bin/less
+## PATH                    /Library/Frameworks/R.framework/Resources/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Library/TeX/texbin:/usr/local/MacGPG2/bin:/opt/puppetlabs/bin:/usr/local/munki:/opt/X11/bin:/usr/local/git/bin
+## PROCESSX_PSWUTVRKMIRE_1591048303
+##                         YES
+## PWD                     /private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpAipB0j/Rbuild15a497ffe8c/rmdpartials
+## RMARKDOWN_MATHJAX_PATH
+##                         /Applications/RStudio.app/Contents/Resources/resources/mathjax-26
+## RSTUDIO                 1
+## RSTUDIO_CONSOLE_COLOR   256
+## RSTUDIO_CONSOLE_WIDTH   88
+## RSTUDIO_PANDOC          /Applications/RStudio.app/Contents/MacOS/pandoc
+## RSTUDIO_SESSION_PORT    24278
+## RSTUDIO_USER_IDENTITY   rubenarslan
+## RSTUDIO_WINUTILS        bin/winutils
+## RS_PPM_FD_READ          4
+## RS_PPM_FD_WRITE         29
+## RS_RPOSTBACK_PATH       /Applications/RStudio.app/Contents/MacOS/rpostback
+## RS_SHARED_SECRET        132163034912179147221826093097
+## R_ARCH                  
+## R_BROWSER               false
+## R_BUILD_TEMPLIB         /var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T//RtmpAipB0j/Rinst15a4953209995
+## R_BZIPCMD               /usr/bin/bzip2
+## R_CMD                   /Library/Frameworks/R.framework/Resources/bin/Rcmd
+## R_DEFAULT_PACKAGES      
+## R_DOC_DIR               /Library/Frameworks/R.framework/Resources/doc
+## R_ENVIRON               
+## R_ENVIRON_USER          
+## R_GZIPCMD               /usr/bin/gzip
+## R_HOME                  /Library/Frameworks/R.framework/Resources
+## R_INCLUDE_DIR           /Library/Frameworks/R.framework/Resources/include
+## R_LIBS                  /private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpAipB0j/Rinst15a4953209995:/private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpMoDYA7/temp_libpath156c2228f4b94:/Library/Frameworks/R.framework/Versions/3.5/Resources/library
+## R_LIBS_SITE             
+## R_LIBS_USER             /private/var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/RtmpMoDYA7/temp_libpath156c2228f4b94:/Library/Frameworks/R.framework/Versions/3.5/Resources/library
+## R_OSTYPE                unix
+## R_PACKRAT_DEFAULT_LIBPATHS
+##                         /Library/Frameworks/R.framework/Versions/3.5/Resources/library
+## R_PACKRAT_SITE_LIBRARY
+##                         
+## R_PACKRAT_SYSTEM_LIBRARY
+##                         /Library/Frameworks/R.framework/Resources/library
+## R_PAPERSIZE             a4
+## R_PAPERSIZE_USER        a4
+## R_PDFVIEWER             false
+## R_PLATFORM              x86_64-apple-darwin15.6.0
+## R_PRINTCMD              lpr
+## R_PROFILE               
+## R_PROFILE_USER          
+## R_QPDF                  /Library/Frameworks/R.framework/Resources/bin/qpdf
+## R_RD4PDF                times,inconsolata,hyper
+## R_SESSION_TMPDIR        /var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T//RtmpGYIWYN
+## R_SHARE_DIR             /Library/Frameworks/R.framework/Resources/share
+## R_SYSTEM_ABI            osx,gcc,gxx,gfortran,?
+## R_TESTS                 
+## R_TEXI2DVICMD           /usr/local/bin/texi2dvi
+## R_UNZIPCMD              /usr/bin/unzip
+## R_VERSION               3.5.3
+## R_ZIPCMD                /usr/bin/zip
+## SED                     /usr/bin/sed
+## SHELL                   /bin/bash
+## SHLVL                   2
+## SSH_ASKPASS             rpostback-askpass
+## SSH_AUTH_SOCK           /private/tmp/com.apple.launchd.kKbAnFdQKs/Listeners
+## TAR                     /usr/bin/tar
+## TERM                    xterm-256color
+## TEXINPUTS               .:/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex:
+## TMPDIR                  /var/folders/tr/lgwjmdgd72bckr1hj5gd_7640000gq/T/
+## TWITTER_PAT             /Users/rubenarslan/.rtweet_token3.rds
+## USER                    rubenarslan
+## XPC_FLAGS               0x0
+## XPC_SERVICE_NAME        0
+## _R_CHECK_LENGTH_1_LOGIC2_
+##                         TRUE
+## __CF_USER_TEXT_ENCODING
+##                         0x1F7:0x0:0x2
+## __KMP_REGISTERED_LIB_47319
+##                         0x1096698e8-cafe51d7-libomp.dylib
+## __KMP_REGISTERED_LIB_87746
+##                         0x106da88e8-cafec134-libomp.dylib
+## __KMP_REGISTERED_LIB_88676
+##                         0x1055c48e8-cafe7ba6-libomp.dylib</code></pre>
+</details>
+<details>
+<p><summary>options()</summary></p>
+<pre><code>## $CBoundsCheck
+## [1] FALSE
+## 
+## $HTTPUserAgent
+## [1] &quot;R (3.5.3 x86_64-apple-darwin15.6.0 x86_64 darwin15.6.0)&quot;
+## 
+## $OutDec
+## [1] &quot;.&quot;
+## 
+## $PCRE_limit_recursion
+## [1] NA
+## 
+## $PCRE_study
+## [1] 10
+## 
+## $PCRE_use_JIT
+## [1] TRUE
+## 
+## $add.smooth
+## [1] TRUE
+## 
+## $bitmapType
+## [1] &quot;quartz&quot;
+## 
+## $browser
+## [1] &quot;false&quot;
+## 
+## $browserNLdisabled
+## [1] FALSE
+## 
+## $callr.condition_handler_cli_message
+## function (msg) 
+## {
+##     custom_handler &lt;- getOption(&quot;cli.default_handler&quot;)
+##     if (is.function(custom_handler)) {
+##         custom_handler(msg)
+##     }
+##     else {
+##         cli_server_default(msg)
+##     }
+## }
+## &lt;bytecode: 0x7fd5dfb8b550&gt;
+## &lt;environment: namespace:cli&gt;
+## 
+## $check.bounds
+## [1] FALSE
+## 
+## $citation.bibtex.max
+## [1] 1
+## 
+## $continue
+## [1] &quot;+ &quot;
+## 
+## $contrasts
+##         unordered           ordered 
+## &quot;contr.treatment&quot;      &quot;contr.poly&quot; 
+## 
+## $defaultPackages
+## [1] &quot;datasets&quot;  &quot;utils&quot;     &quot;grDevices&quot; &quot;graphics&quot;  &quot;stats&quot;     &quot;methods&quot;  
+## 
+## $demo.ask
+## [1] &quot;default&quot;
+## 
+## $deparse.cutoff
+## [1] 60
+## 
+## $device
+## function (width = 7, height = 7, ...) 
+## {
+##     grDevices::pdf(NULL, width, height, ...)
+## }
+## &lt;bytecode: 0x7fd5dd0a41c0&gt;
+## &lt;environment: namespace:knitr&gt;
+## 
+## $device.ask.default
+## [1] FALSE
+## 
+## $digits
+## [1] 7
+## 
+## $dplyr.show_progress
+## [1] TRUE
+## 
+## $dvipscmd
+## [1] &quot;dvips&quot;
+## 
+## $echo
+## [1] FALSE
+## 
+## $editor
+## [1] &quot;vi&quot;
+## 
+## $encoding
+## [1] &quot;native.enc&quot;
+## 
+## $example.ask
+## [1] &quot;default&quot;
+## 
+## $expressions
+## [1] 5000
+## 
+## $fansi.css
+## [1] &quot;PRE.fansi SPAN {padding-top: .25em; padding-bottom: .25em};&quot;
+## 
+## $fansi.ctrl
+## [1] &quot;all&quot;
+## 
+## $fansi.tab.stops
+## [1] 8
+## 
+## $fansi.tabs.as.spaces
+## [1] FALSE
+## 
+## $fansi.term.cap
+## [1] &quot;bright&quot; &quot;256&quot;   
+## 
+## $fansi.warn
+## [1] TRUE
+## 
+## $help.search.types
+## [1] &quot;vignette&quot; &quot;demo&quot;     &quot;help&quot;    
+## 
+## $help.try.all.packages
+## [1] FALSE
+## 
+## $install.packages.compile.from.source
+## [1] &quot;interactive&quot;
+## 
+## $internet.info
+## [1] 2
+## 
+## $keep.source
+## [1] FALSE
+## 
+## $keep.source.pkgs
+## [1] FALSE
+## 
+## $knitr.duplicate.label
+## [1] &quot;allow&quot;
+## 
+## $knitr.in.progress
+## [1] TRUE
+## 
+## $locatorBell
+## [1] TRUE
+## 
+## $mailer
+## [1] &quot;mailto&quot;
+## 
+## $matprod
+## [1] &quot;default&quot;
+## 
+## $max.print
+## [1] 99999
+## 
+## $menu.graphics
+## [1] TRUE
+## 
+## $na.action
+## [1] &quot;na.omit&quot;
+## 
+## $nwarnings
+## [1] 50
+## 
+## $pager
+## [1] &quot;/Library/Frameworks/R.framework/Resources/bin/pager&quot;
+## 
+## $papersize
+## [1] &quot;a4&quot;
+## 
+## $pdfviewer
+## [1] &quot;false&quot;
+## 
+## $pkgType
+## [1] &quot;both&quot;
+## 
+## $printcmd
+## [1] &quot;lpr&quot;
+## 
+## $prompt
+## [1] &quot;&gt; &quot;
+## 
+## $repos
+##     CRAN 
+## &quot;@CRAN@&quot; 
+## 
+## $rl_word_breaks
+## [1] &quot; \t\n\&quot;\\&#39;`&gt;&lt;=%;,|&amp;{()}&quot;
+## 
+## $scipen
+## [1] 0
+## 
+## $show.coef.Pvalues
+## [1] TRUE
+## 
+## $show.error.messages
+## [1] TRUE
+## 
+## $show.signif.stars
+## [1] TRUE
+## 
+## $showErrorCalls
+## [1] TRUE
+## 
+## $str
+## $str$strict.width
+## [1] &quot;no&quot;
+## 
+## $str$digits.d
+## [1] 3
+## 
+## $str$vec.len
+## [1] 4
+## 
+## 
+## $str.dendrogram.last
+## [1] &quot;`&quot;
+## 
+## $stringsAsFactors
+## [1] TRUE
+## 
+## $texi2dvi
+## [1] &quot;/usr/local/bin/texi2dvi&quot;
+## 
+## $tikzMetricsDictionary
+## [1] &quot;rmdpartials-tikzDictionary&quot;
+## 
+## $timeout
+## [1] 60
+## 
+## $try.outFile
+## A connection with                            
+## description &quot;output&quot;        
+## class       &quot;textConnection&quot;
+## mode        &quot;wr&quot;            
+## text        &quot;text&quot;          
+## opened      &quot;opened&quot;        
+## can read    &quot;no&quot;            
+## can write   &quot;yes&quot;           
+## 
+## $ts.S.compat
+## [1] FALSE
+## 
+## $ts.eps
+## [1] 1e-05
+## 
+## $unzip
+## [1] &quot;/usr/bin/unzip&quot;
+## 
+## $useFancyQuotes
+## [1] FALSE
+## 
+## $verbose
+## [1] FALSE
+## 
+## $warn
+## [1] 1
+## 
+## $warning.length
+## [1] 1000
+## 
+## $width
+## [1] 80</code></pre>
+</details>
+</details>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

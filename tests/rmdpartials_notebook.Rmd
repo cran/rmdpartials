@@ -1,0 +1,49 @@
+---
+title: "Rmarkdown as notebook"
+author: "Ruben Arslan"
+date: "2019-07-12"
+output:
+  html_notebook
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Introduction
+
+For example, you can make enlarge-able plots:
+
+```{r echo=FALSE}
+# knitr::opts_knit$set(child = TRUE)
+set.seed(1)
+```
+
+## Graphical relationship
+```{r}
+library(rmdpartials)
+library(ggplot2)
+x <- rnorm(100)
+y <- x + rnorm(100) + 0.5 * x^2
+curve <- ggplot(mapping = aes(x, y)) + geom_point()
+enlarge_plot(curve, large_plot = curve + theme_classic(base_size = 20), plot_name = "myplot")
+```
+
+## Regression
+```{r}
+reg <- lm(y ~ x)
+regression_diagnostics(reg)
+```
+
+## Write a partial on the fly
+```{r}
+x <- 5
+y <- 9
+partial(text = "`r x` `r y`", render_preview = TRUE)
+```
+
+
+## Debug
+Learn about environments in partials.
+
+```{r}
+knit_child_debug()
+```

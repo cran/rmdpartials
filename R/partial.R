@@ -23,6 +23,7 @@
 #' @param options defaults to NULL.
 #' @param envir passed to [knitr::knit_child()]
 #' @param name a name to use for cacheing and figure paths. Randomly generated if left unspecified.
+#' @param cacheable whether the results of this partial can be cached in knitr
 #' @param show_code whether to print the R code for the partial or just the results (sets the chunk option echo = FALSE while the chunk is being rendered)
 #' @param use_strings whether to read in the child file as a character string (solves working directory problems but harder to debug)
 #' @param render_preview true if interactive mode is auto-detected, false when actually knitting the partial as a child
@@ -46,6 +47,7 @@ partial <- function(input = NULL, ...,
                     text = NULL, output = NULL,
                     quiet = TRUE, options = NULL,
                     envir = parent.frame(), name = NULL,
+                    cacheable = NA,
                     show_code = FALSE,
                     use_strings = TRUE,
                     render_preview = needs_preview(),
@@ -180,19 +182,13 @@ partial <- function(input = NULL, ...,
   }, add = TRUE)
   knitr::opts_knit$set(knit_options)
 
-  # taken from knit_child
-  encode <- knitr::opts_knit$get("encoding")
-  if (is.null(encode)) {
-    encode <- getOption("encoding")
-  }
-
   knit_meta <- list()
   if (!render_preview) {
     # a) render with knitr as child document
     knit_meta$output.dir <- knit_options$output.dir
     res <- knitr::knit(input = input, output = NULL, text = text,
                        quiet = quiet, tangle = knitr::opts_knit$get("tangle"),
-                       envir = envir, encoding = encode)
+                       envir = envir)
   } else {
     # b) render with rmarkdown as preview
     text <- paste0("---
@@ -213,7 +209,7 @@ pagetitle: Partial preview
         rmarkdown::render(input_file_rmd,
                           output_format = preview_output_format,
                           output_file = output_file_html,
-                          envir = envir, encoding = encode,
+                          envir = envir,
                           clean = FALSE
                           )
         )
@@ -241,7 +237,7 @@ pagetitle: Partial preview
 
 
   knitr::asis_output(paste(c("", res), collapse = "\n"),
-                            meta = knit_meta)
+                            meta = knit_meta, cacheable = cacheable)
 }
 
 is_interactive <- function()
@@ -268,15 +264,9 @@ needs_preview <- function() {
   child <- knitr::opts_knit$get("child")
 
 
-  # for checks, we don't want to clutter the build dir and it's running
-  # examples that users will run as interactive
-  checking <- Sys.getenv("checkArgs") != ""
-
-  # so we build our own
-  ## if there is a viewer available, we are probably in RStudio and not knitting
   interactive <- is_interactive()
 
-  (!child && (checking || interactive))
+  (!isTRUE(child) && interactive)
 }
 
 

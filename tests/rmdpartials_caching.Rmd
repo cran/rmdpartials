@@ -1,0 +1,66 @@
+---
+title: "Rmarkdown as notebook"
+author: "Ruben Arslan"
+date: "2019-07-12"
+output:
+  html_document
+editor_options: 
+  chunk_output_type: inline
+---
+
+# Introduction
+
+For example, you can make enlarge-able plots:
+
+```{r echo=FALSE}
+knitr::opts_chunk$set(cache = TRUE,autodep=TRUE)
+```
+
+## Random number 1
+```{r}
+library(rmdpartials)
+
+partial(text = "`r runif(1)`")
+times = 100
+```
+
+## Random number 2
+```{r}
+make_random_number <- function(times = 10) {
+  random_number = runif(1) * times
+  partial(text = "`r random_number`")
+}
+make_random_number <- function(times = 10) {
+  random_number = runif(1) * times
+  partial(text = paste0("`","``{r}
+plot(random_number)
+``","`"))
+}
+make_random_number(times)
+```
+
+## Random number 3
+```{r}
+make_random_number()
+```
+
+
+## Random number 4
+```{r}
+make_two_random_numbers <- function(times) {
+  partial(text = paste0("`","``{r}
+make_random_number(times)
+``","`","
+
+`","``{r}
+make_random_number(times)
+``","`"))
+}
+make_two_random_numbers(times)
+```
+
+## Random number 5
+```{r}
+make_two_random_numbers(times)
+```
+

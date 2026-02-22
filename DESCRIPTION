@@ -7,8 +7,9 @@ Description:
 		You may want to use this package, if you want to flexibly summarise objects 
 		using a combination of figures, tables, text, and HTML widgets. 
 		Unlike HTML widgets, the output is Markdown and can hence be turn into other
-		output formats than HTML.
-Version: 0.5.8
+		output formats than HTML. Currently does not play well with 'rmarkdown' notebooks,
+		not tested with Quarto.
+Version: 0.6.5
 Authors@R: c(
   person("Ruben", "Arslan", email = "ruben.arslan@gmail.com", role = c("aut", "cre")),
   person("Gjalt-Jorn", "Peters", email = "gjalt-jorn@userfriendlyscience.com",
@@ -16,20 +17,20 @@ Authors@R: c(
   )
 Depends: R (>= 3.0.1)
 Language: en-GB
-URL: https://github.com/rubenarslan/rmdpartials
+URL: https://github.com/rubenarslan/rmdpartials,
+        https://rubenarslan.github.io/rmdpartials/
 BugReports: https://github.com/rubenarslan/rmdpartials/issues
 License: MIT + file LICENSE
 Imports: stats, digest, utils, knitr, rlang
-Suggests: grDevices, graphics, testthat, roxygen2, rmarkdown, pkgdown,
-        covr, spelling, dplyr, DT, ggplot2
+Suggests: grDevices, graphics, testthat, rmarkdown, covr, dplyr, DT,
+        ggplot2, pkgdown, spelling
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2020-06-01 21:52:08 UTC; rubenarslan
+Packaged: 2026-02-22 15:47:50 UTC; rubenarslan
 Author: Ruben Arslan [aut, cre],
   Gjalt-Jorn Peters [aut, ctb]
 Maintainer: Ruben Arslan <ruben.arslan@gmail.com>
 Repository: CRAN
-Date/Publication: 2020-06-04 14:10:13 UTC
+Date/Publication: 2026-02-22 17:10:02 UTC
